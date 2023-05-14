@@ -1,0 +1,162 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  background-color: #F0F8FF;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.card-navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  width: 300px; 
+  height: 400px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  background-color: #288d90;
+  border-radius: 7px;
+  color: #ecf6f7;
+}
+
+/* Tmeperature data font */
+.card .temperature {
+  font-size: 32px; 
+  margin-bottom: 10px;
+}
+
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 100px; /* Increase the width of the image */
+  height: 100px; /* Increase the height of the image */
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin-bottom: 5px;
+}
+
+.add-to-collection-button {
+  font-size: 24px;
+  border: none;
+  background-color: transparent;
+  color: #289090;
+  cursor: pointer;
+}
+
+.nav-button {
+  font-size: 24px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: none;
+  background-color: transparent;
+  color:  #289090;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ADD8E6;
+}
+
+/*
+  Styles for the form, text input, and submit button
+*/
+
+form {
+  display: flex;
+  flex-direction: column; /* Align the elements vertically */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #289090;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #289090;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #146565;
+}
+/*
+  Styles for the form, text input, and submit button
+*/
+
+form {
+  display: flex;
+  flex-direction: column; /* Align the elements vertically */
+  align-items: center;
+  justify-content: center; /* Center the elements vertically */
+  gap: 30px; /* Add space between the elements */
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #289090;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #289090;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #146565;
+}
+
+
+footer {
+ 
+  margin-top: 50px;
+}

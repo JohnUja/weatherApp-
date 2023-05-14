@@ -1,0 +1,217 @@
+nly a single weather card should be visible at any given time. This card is the most recently generated weather card.
+
+Navigation through the collection of cards should be facilitated through left (<) and right (>) UI icons. Clicking these should reveal the other cards in the collection.
+
+A "+" button should be present on the home screen if the current card is not yet part of the collection. This button will add the card to the collection when clicked.
+
+
+The cards show take up the rest of the space on the view port that the form submission does not use, it should be 1.5x as long in length as it height, leave some extra space on the view port so it still looks clean.
+
+Once a card is added to the collection, it remains visible until a new card is generated. The new card takes its place, and the old card is added to the hidden part of the collection, only accessible through the left and right navigation buttons.he card need to be wider and longer as i said maybe set the div class that contains the card to set the lenght appropriately, als make the width wider so the left and right buttons can sit preety on the left and right even though they may be in a flex column, just make the left and right buttons is < > toflex end and flex start to be on the leftmost side of the card and rightmost side of the card on their column space, also you forgot the functionality for adding cards to a collection
+dont forget to add the functionality that allows the user add cards to their collection 
+
+
+heres my javascript document.addEventListener("DOMContentLoaded", () => {
+  class Card {
+    constructor(data) {
+      this.data = data;
+      this.element = this.createElement();
+    }
+
+    createElement() {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      const cityNameElement = document.createElement("h2");
+      cityNameElement.textContent = this.data.city;
+
+      const iconElement = document.createElement("img");
+      iconElement.src =
+        "http://openweathermap.org/img/w/" + this.data.icon + ".png";
+      iconElement.alt = "Weather Icon";
+
+      const temperatureElement = document.createElement("p");
+      temperatureElement.textContent = `Temperature: ${this.data.temp}°C`;
+
+      const descriptionElement = document.createElement("p");
+      descriptionElement.textContent = `Description: ${this.data.description}`;
+
+      card.appendChild(cityNameElement);
+      card.appendChild(iconElement);
+      card.appendChild(descriptionElement);
+      card.appendChild(temperatureElement);
+
+      return card;
+    }
+  }
+
+  class CardCollection {
+    constructor() {
+      this.cards = [];
+      this.cardContainer = document.querySelector("#card-content");
+      this.navigationContainer = document.querySelector("#card-navigation");
+      this.addToCollectionButton = document.querySelector("#add-to-collection");
+
+      this.addToCollectionButton.addEventListener("click", () => {
+        if (this.cards.length > 0) {
+          const activeCard = this.cards[0];
+          activeCard.element.removeChild(this.addToCollectionButton);
+        }
+      });
+    }
+
+    async generateNewCard(cityName) {
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ cityName }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Error fetching weather data");
+        }
+
+        const data = await response.json();
+        const newCard = new Card(data);
+
+        this.addCard(newCard);
+      } catch (error) {
+        console.error("Error fetching weather data:", error);
+      }
+    }
+
+    addCard(card) {
+      this.cards.unshift(card);
+      this.renderCards();
+    }
+
+    renderCards() {
+      this.cardContainer.innerHTML = "";
+      this.navigationContainer.innerHTML = "";
+
+      this.cards.forEach((card, index) => {
+        this.cardContainer.appendChild(card.element);
+
+        if (index === 0) {
+          const prevButton = document.createElement("button");
+          prevButton.textContent = "<";
+          prevButton.classList.add("nav-button");
+          prevButton.addEventListener("click", () => {
+            this.prevCard();
+          });
+
+          this.navigationContainer.appendChild(prevButton);
+        }
+      });
+    }
+
+    prevCard() {
+      this.cards.push(this.cards.shift());
+      this.renderCards();
+    }
+  }
+
+  const form = document.querySelector("#weatherForm");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const cityNameInput = document.querySelector("#cityNameInput");
+    const cityName = cityNameInput.value.trim();
+
+    if (cityName) {
+      cardCollection.generateNewCard(cityName);
+      cityNameInput.value = "";
+    }
+  });
+
+  const cardCollection = new CardCollection();
+});
+ and heres my css body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #F0F8FF;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.card-navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #289090;
+  border-radius: 5px;
+  margin: 10px;
+  color: #FFFFFF;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin-bottom: 5px;
+}
+
+#add-to-collection {
+  font-size: 24px;
+  border: none;
+  background-color: transparent;
+  color: #289090;
+  cursor: pointer;
+}
+
+.nav-button {
+  font-size: 24px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: none;
+  background-color: transparent;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ADD8E6;
+}
+the only functionality i need now is to hide the rest of the cards, only the most recently generated card should be displyed all others should be hidden, or if the user navigates using < or > then only the card navigated to should be displayed also the > button is not being shown only the < button 
