@@ -1,162 +1,140 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #F0F8FF;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  background-color: #F0F8FF;
+  min-height: 100vh;
 }
 
+/* Container */
 .container {
   max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
   padding: 20px;
+  text-align: center;
 }
 
+/* Form styles */
 form {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
+input[type="text"] {
+  padding: 12px;
+  font-size: 16px;
+  width: 250px;
+  border: 2px solid #289090;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #063829;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: poppins, sans-serif;
+  
+}
+
+button[type="submit"]:hover,
+button:hover {
+  background-color: #146565;
+}
+
+/* Card container */
 .card-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
-}
-
-.card-navigation {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
 }
 
 .card-content {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
+
 .card {
-  width: 300px; 
-  height: 400px; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 20px;
-  background-color: #288d90;
+  width: 320px;
+  height: 420px;
+  background: linear-gradient(145deg, #24bdd5, #ece524);
   border-radius: 7px;
   color: #ecf6f7;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(26, 2, 2, 0.978);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  transition: transform 0.2s;
+  
 }
 
-/* Tmeperature data font */
-.card .temperature {
-  font-size: 32px; 
-  margin-bottom: 10px;
-}
-
-
-.card h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.card:hover {
+  transform: scale(1.02);
 }
 
 .card img {
-  width: 100px; /* Increase the width of the image */
-  height: 100px; /* Increase the height of the image */
-  margin-bottom: 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.card h2 {
+  font-size: 23px;
+  font-family: poppins, sans-serif;
+  font-weight: 300;
+  margin: 10px 0;
+  stroke-width: 1px;
+  
+ 
+  
+}
+
+.card .temperature {
+  font-size: 30px;
+  font-weight: normal;
+  margin: 5px 0;
+  stroke: black;
 }
 
 .card p {
-  margin-bottom: 5px;
+  margin: 4px 0;
 }
 
-.add-to-collection-button {
+/* Buttons */
+.add-to-collection-button,
+.nav-button {
   font-size: 24px;
   border: none;
   background-color: transparent;
-  color: #289090;
+  color: #000000;
   cursor: pointer;
+  padding: 8px;
 }
 
 .nav-button {
-  font-size: 24px;
-  padding: 5px 10px;
-  margin: 0 5px;
-  border: none;
-  background-color: transparent;
-  color:  #289090;
-  cursor: pointer;
+  margin: 0 10px;
 }
-
-button:hover {
-  background-color: #ADD8E6;
-}
-
-/*
-  Styles for the form, text input, and submit button
-*/
-
-form {
-  display: flex;
-  flex-direction: column; /* Align the elements vertically */
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #289090;
-  border-radius: 5px;
-}
-
-button[type="submit"] {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #289090;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #146565;
-}
-/*
-  Styles for the form, text input, and submit button
-*/
-
-form {
-  display: flex;
-  flex-direction: column; /* Align the elements vertically */
-  align-items: center;
-  justify-content: center; /* Center the elements vertically */
-  gap: 30px; /* Add space between the elements */
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #289090;
-  border-radius: 5px;
-}
-
-button[type="submit"] {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #289090;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #146565;
-}
-
 
 footer {
- 
-  margin-top: 50px;
+  margin-top: auto;
+  padding: 20px;
+  font-size: 14px;
+  color: #555;
 }
+
