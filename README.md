@@ -2,7 +2,9 @@
 
 A sleek and dynamic weather app that lets you search real-time weather by city, create cards, and build a personal stack of favorite locations.
 
-Access the live weatherly app here: [http://34.207.128.36:3000](http://34.207.128.36:3000)
+## Access  Live Weatherly app here 
+<a href="http://34.207.128.36:3000" target="_blank" rel="noopener noreferrer">Open Live App</a>
+
 
 ## 🔑 Features
 
